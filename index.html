@@ -2,206 +2,265 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Isabela 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <title>Lista de Presença</title>
   <style>
-    * {
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      background: #e6f0ff;
+      color: #003366;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
       box-sizing: border-box;
     }
 
-    body {
-      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-      font-family: 'Quicksand', sans-serif;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-    }
-
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url('https://raw.githubusercontent.com/matteobruni/tsparticles/gh-pages/images/star.svg');
-      background-repeat: repeat;
-      animation: twinkle 20s linear infinite;
-      z-index: 0;
-      opacity: 0.2;
-    }
-
-    @keyframes twinkle {
-      from { background-position: 0 0; }
-      to { background-position: 1000px 1000px; }
-    }
-
     .container {
-      z-index: 2;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 51, 102, 0.15);
+      width: 400px;
       text-align: center;
     }
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 64px;
-      color: #fff;
-      text-shadow: 2px 2px #ff69b4;
-      margin-bottom: 40px;
-      animation: glow 3s infinite ease-in-out;
+    h1, h2 {
+      color: #004080;
+      margin-bottom: 20px;
     }
 
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 10px #ff69b4; }
-      50% { text-shadow: 0 0 20px #ff1493; }
+    .section {
+      margin-bottom: 30px;
+      text-align: left;
     }
 
-    .buttons button {
-      background-color: #fff;
-      border: none;
-      border-radius: 40px;
-      padding: 15px 35px;
-      font-size: 18px;
+    label {
+      display: block;
+      margin-bottom: 8px;
       font-weight: bold;
-      color: #ff4081;
-      margin: 10px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+      font-size: 18px;
     }
 
-    .buttons button:hover {
-      background-color: #ff4081;
+    input[type="text"] {
+      padding: 10px;
+      border: 2px solid #80aaff;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus {
+      border-color: #3366ff;
+      box-shadow: 0 0 5px rgba(51, 102, 255, 0.5);
+    }
+
+    button {
+      background-color: #6699ff;
+      border: none;
       color: white;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #fff0f5;
+      padding: 10px 18px;
+      margin-top: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 3px 6px rgba(102, 153, 255, 0.4);
+      width: 100%;
+    }
+    button:hover {
+      background-color: #4d7de6;
+      box-shadow: 0 5px 10px rgba(77, 125, 230, 0.6);
+    }
+    button:active {
+      background-color: #3359cc;
+      box-shadow: 0 2px 4px rgba(51, 89, 204, 0.7);
     }
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      transform: rotate(45deg);
-      animation: float 8s linear infinite;
-      z-index: 1;
-      opacity: 0.6;
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
     }
 
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      border-radius: 50%;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      text-align: left;
+      margin: 10px 0 0 0;
+      width: 100%;
+      border: 1px solid #80aaff;
+      border-radius: 8px;
+      padding: 10px 15px;
+      background: #f0f5ff;
     }
 
-    .heart::before { top: -10px; left: 0; }
-    .heart::after { left: -10px; top: 0; }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(45deg);
-        opacity: 0;
-      }
+    li {
+      margin: 8px 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
     }
 
-    #finalMessage {
-      margin-top: 40px;
-      font-size: 24px;
-      color: #fff;
-      white-space: pre-wrap;
-      display: none;
-      opacity: 0;
-      animation: fadeIn 2s ease-in forwards;
+    li input[type="checkbox"] {
+      transform: scale(1.2);
+      cursor: pointer;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    label[for^="aluno_"] {
+      margin-left: 10px;
+      cursor: pointer;
+      user-select: none;
+      flex-grow: 1;
+    }
+
+    .contador {
+      font-weight: bold;
+      margin-top: 8px;
+      color: #3366ff;
     }
   </style>
 </head>
 <body>
-
-  <!-- Estrelas -->
-  <div class="stars"></div>
-
-  <!-- Música romântica -->
-  <audio id="musicaFofa" autoplay loop>
-    <source src="musica.mp3.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Conteúdo central -->
   <div class="container">
-    <h1>Quer namorar comigo?</h1>
-    <div class="buttons">
-      <button onclick="responder('sim')">Sim 💞</button>
-      <button id="naoBtn">Não 😢</button>
+    <h1>Lista de Presença</h1>
+
+    <div class="section">
+      <div class="button-group">
+        <button onclick="mostrarAdicionarAlunos()">Adicionar Alunos</button>
+        <button onclick="mostrarChamada()">Fazer Chamada</button>
+      </div>
     </div>
-    <div id="finalMessage"></div>
+
+    <div class="section" id="adicionarAlunos" style="display: none;">
+      <h2>Adicionar Alunos</h2>
+      <label for="nomeAluno">Nome do aluno:</label>
+      <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno" />
+      <button onclick="adicionarAluno()">Adicionar à lista</button>
+      <div class="contador" id="contadorAlunos">Total de alunos: 0</div>
+    </div>
+
+    <div class="section" id="marcarPresenca" style="display: none;">
+      <h2>Alunos para Presença</h2>
+      <ul id="listaAlunos"></ul>
+      <button onclick="mostrarPresenca()">Mostrar Presença</button>
+      <h3>Alunos Presentes</h3>
+      <ul id="alunosPresentes"></ul>
+    </div>
   </div>
 
-  <!-- Corações flutuando -->
   <script>
-    for (let i = 0; i < 40; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDuration = `${4 + Math.random() * 4}s`;
-      heart.style.opacity = Math.random();
-      document.body.appendChild(heart);
+    const listaAlunos = document.getElementById('listaAlunos');
+    const alunosPresentes = document.getElementById('alunosPresentes');
+    const contadorAlunos = document.getElementById('contadorAlunos');
+    const inputAluno = document.getElementById('nomeAluno');
+    const secaoAdicionar = document.getElementById('adicionarAlunos');
+    const secaoChamada = document.getElementById('marcarPresenca');
+
+    let alunos = [];
+    const storageKey = 'alunosLista';
+
+    function mostrarAdicionarAlunos() {
+      secaoAdicionar.style.display = 'block';
+      secaoChamada.style.display = 'none';
     }
 
-    // Botão "Não" que foge
-    const naoBtn = document.getElementById("naoBtn");
-    naoBtn.addEventListener("mouseenter", () => {
-      const newTop = Math.random() * (window.innerHeight - 100);
-      const newLeft = Math.random() * (window.innerWidth - 100);
-      naoBtn.style.position = "absolute";
-      naoBtn.style.top = `${newTop}px`;
-      naoBtn.style.left = `${newLeft}px`;
+    function mostrarChamada() {
+      secaoAdicionar.style.display = 'none';
+      secaoChamada.style.display = 'block';
+    }
+
+    function carregarAlunos() {
+      const dados = localStorage.getItem(storageKey);
+      if (dados) {
+        alunos = JSON.parse(dados);
+      }
+    }
+
+    function salvarAlunos() {
+      localStorage.setItem(storageKey, JSON.stringify(alunos));
+    }
+
+    function atualizarContador() {
+      contadorAlunos.textContent = `Total de alunos: ${alunos.length}`;
+    }
+
+    function adicionarAluno() {
+      const nome = inputAluno.value.trim();
+      if (nome === '') {
+        alert('Por favor, digite um nome.');
+        return;
+      }
+      if (alunos.some(a => a.toLowerCase() === nome.toLowerCase())) {
+        alert('Este aluno já está na lista.');
+        inputAluno.value = '';
+        inputAluno.focus();
+        return;
+      }
+
+      alunos.push(nome);
+      salvarAlunos();
+      inputAluno.value = '';
+      inputAluno.focus();
+
+      atualizarLista();
+      atualizarContador();
+    }
+
+    function atualizarLista() {
+      listaAlunos.innerHTML = '';
+      alunos.forEach((nome, index) => {
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'aluno_' + index;
+
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = nome;
+
+        li.appendChild(checkbox);
+        li.appendChild(label);
+        listaAlunos.appendChild(li);
+      });
+    }
+
+    function mostrarPresenca() {
+      alunosPresentes.innerHTML = '';
+      const checkboxes = listaAlunos.querySelectorAll('input[type="checkbox"]');
+      let presentes = [];
+      checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+          presentes.push(alunos[index]);
+        }
+      });
+      if (presentes.length === 0) {
+        alunosPresentes.innerHTML = '<li>Nenhum aluno presente.</li>';
+      } else {
+        presentes.forEach(nome => {
+          const li = document.createElement('li');
+          li.textContent = nome;
+          alunosPresentes.appendChild(li);
+        });
+      }
+    }
+
+    inputAluno.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        adicionarAluno();
+      }
     });
 
-    // Resposta do "Sim"
-    function responder(resposta) {
-      if (resposta === 'sim') {
-        escreverMensagem("Você disse SIM 💍\n\nAgora não tem mais volta!\nVamos viver algo incrível juntos. 💖");
-      }
-    }
-
-    // Efeito máquina de escrever
-    function escreverMensagem(texto) {
-      const div = document.getElementById('finalMessage');
-      div.style.display = 'block';
-      div.textContent = '';
-      let i = 0;
-      const interval = setInterval(() => {
-        div.textContent += texto[i];
-        i++;
-        if (i === texto.length) clearInterval(interval);
-      }, 50);
-    }
-
-    // Desbloqueio da música
-    window.addEventListener('click', () => {
-      const audio = document.getElementById('musicaFofa');
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      carregarAlunos();
+      atualizarLista();
+      atualizarContador();
     });
   </script>
-
 </body>
 </html>
